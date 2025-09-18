@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1125</width>
-    <height>745</height>
+    <width>1192</width>
+    <height>757</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,29 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
      <widget class="QTabWidget" name="panMain">
+      <property name="maximumSize">
+       <size>
+        <width>1100</width>
+        <height>900</height>
+       </size>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -551,6 +573,22 @@
       </widget>
      </widget>
     </item>
+    <item>
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
    </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -558,7 +596,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1125</width>
+     <width>1192</width>
      <height>21</height>
     </rect>
    </property>
@@ -589,6 +627,26 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>panMain</tabstop>
+  <tabstop>txtDnicli</tabstop>
+  <tabstop>txtAltacli</tabstop>
+  <tabstop>btnFechaaltacli</tabstop>
+  <tabstop>txtApelcli</tabstop>
+  <tabstop>txtNombrecli</tabstop>
+  <tabstop>txtEmailcli</tabstop>
+  <tabstop>txtMobilecli</tabstop>
+  <tabstop>txtAddresscli</tabstop>
+  <tabstop>cmbProvincecli</tabstop>
+  <tabstop>cmbCitycli</tabstop>
+  <tabstop>rbtFace</tabstop>
+  <tabstop>rbtFacpapel</tabstop>
+  <tabstop>btnSavecli</tabstop>
+  <tabstop>btmModycli</tabstop>
+  <tabstop>btnDelcli</tabstop>
+  <tabstop>chkHistoriccli</tabstop>
+  <tabstop>tableCustomerList</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
  <buttongroups>

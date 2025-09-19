@@ -1,3 +1,4 @@
+from events import *
 from window import *
 import sys
 
@@ -6,6 +7,9 @@ class Main(QtWidgets.QMainWindow):
         super(Main, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        # Functions in menu bar
+        self.ui.actionExit.triggered.connect(Events.messageExit)
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = Main()

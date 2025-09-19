@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>EmpresaTeis</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <selectedon>../../../Pictures/DI/logo.png</selectedon>
+   </iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>

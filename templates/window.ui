@@ -594,6 +594,7 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuTools">
     <property name="title">
@@ -604,6 +605,7 @@
     <property name="title">
      <string>Reports</string>
     </property>
+    <addaction name="actionCustomer_Report"/>
    </widget>
    <widget class="QMenu" name="menuAbaout">
     <property name="title">
@@ -616,6 +618,16 @@
    <addaction name="menuAbaout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionCustomer_Report">
+   <property name="text">
+    <string>Customer Report</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>panMain</tabstop>

@@ -1,15 +1,24 @@
+import events
+from customers import *
 from events import *
 from window import *
+import globals
 import sys
 
 class Main(QtWidgets.QMainWindow):
     def __init__(self):
         super(Main, self).__init__()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
+        globals.ui = Ui_MainWindow()
+        globals.ui.setupUi(self)
 
         # Functions in menu bar
-        self.ui.actionExit.triggered.connect(Events.messageExit)
+        globals.ui.actionExit.triggered.connect(Events.messageExit)
+
+        # Funciones en lineEdit
+        globals.ui.txtDnicli.editingFinished.connect(Customers.checkDni)
+
+        # Funciones de botones
+        globals.ui.btnFechaaltacli.clicked.connect(events.openCalendar)
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = Main()

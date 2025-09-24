@@ -187,6 +187,7 @@ class Ui_MainWindow(object):
         self.txtAltacli.setMaximumSize(QtCore.QSize(100, 25))
         self.txtAltacli.setText("")
         self.txtAltacli.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.txtAltacli.setReadOnly(True)
         self.txtAltacli.setObjectName("txtAltacli")
         self.gridLayout.addWidget(self.txtAltacli, 0, 7, 1, 1)
         self.lblCitycli = QtWidgets.QLabel(parent=self.tab)

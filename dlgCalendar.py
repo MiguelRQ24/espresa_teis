@@ -15,10 +15,14 @@ class Ui_dlgCalendar(object):
         dlgCalendar.resize(400, 300)
         dlgCalendar.setMinimumSize(QtCore.QSize(400, 300))
         dlgCalendar.setMaximumSize(QtCore.QSize(400, 300))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(".\\templates\\../img/calendar.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        dlgCalendar.setWindowIcon(icon)
         self.calendarWidget = QtWidgets.QCalendarWidget(parent=dlgCalendar)
         self.calendarWidget.setGeometry(QtCore.QRect(0, 0, 400, 300))
         self.calendarWidget.setMinimumSize(QtCore.QSize(400, 300))
         self.calendarWidget.setMaximumSize(QtCore.QSize(400, 300))
+        self.calendarWidget.setGridVisible(True)
         self.calendarWidget.setVerticalHeaderFormat(QtWidgets.QCalendarWidget.VerticalHeaderFormat.NoVerticalHeader)
         self.calendarWidget.setObjectName("calendarWidget")
 
@@ -27,4 +31,4 @@ class Ui_dlgCalendar(object):
 
     def retranslateUi(self, dlgCalendar):
         _translate = QtCore.QCoreApplication.translate
-        dlgCalendar.setWindowTitle(_translate("dlgCalendar", "Dialog"))
+        dlgCalendar.setWindowTitle(_translate("dlgCalendar", "Calendar"))

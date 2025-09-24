@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Calendar</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../img/calendar.png</normaloff>../img/calendar.png</iconset>
   </property>
   <widget class="QCalendarWidget" name="calendarWidget">
    <property name="geometry">
@@ -45,6 +49,9 @@
      <width>400</width>
      <height>300</height>
     </size>
+   </property>
+   <property name="gridVisible">
+    <bool>true</bool>
    </property>
    <property name="verticalHeaderFormat">
     <enum>QCalendarWidget::NoVerticalHeader</enum>

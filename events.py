@@ -1,17 +1,31 @@
 import sys
 from PyQt6 import QtWidgets, QtCore, QtGui
+import globals
+
 
 class Events:
     @staticmethod
     def messageExit(self=None):
-        mbox = QtWidgets.QMessageBox()
-        mbox.setIcon(QtWidgets.QMessageBox.Icon.Question)
-        mbox.setWindowIcon(QtGui.QIcon("./img/logo.png"))
-        mbox.setWindowTitle("Exit Message")
-        mbox.setText("Are you sure you want to exit?")
-        mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No)
-        mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.No)
-        if mbox.exec() == QtWidgets.QMessageBox.StandardButton.Yes:
-            sys.exit()
-        else:
-            mbox.hide()
+        try:
+            mbox = QtWidgets.QMessageBox()
+            mbox.setIcon(QtWidgets.QMessageBox.Icon.Question)
+            mbox.setWindowIcon(QtGui.QIcon("./img/logo.png"))
+            mbox.setWindowTitle("Exit Message")
+            mbox.setText("Are you sure you want to exit?")
+            mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No)
+            mbox.setDefaultButton(QtWidgets.QMessageBox.StandardButton.No)
+            if mbox.exec() == QtWidgets.QMessageBox.StandardButton.Yes:
+                sys.exit()
+            else:
+                mbox.hide()
+        except Exception as e:
+            print("error salida", e)
+
+""" 
+    @staticmethod
+    def openCalendar(self):
+        try:
+            # venCalendar.show()
+        except Exception as e:
+            print("error en calendario", e) 
+"""

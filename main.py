@@ -2,6 +2,7 @@ import events
 from customers import *
 from events import *
 from window import *
+from venCalendar import *
 import globals
 import sys
 
@@ -18,7 +19,7 @@ class Main(QtWidgets.QMainWindow):
         globals.ui.txtDnicli.editingFinished.connect(Customers.checkDni)
 
         # Funciones de botones
-        globals.ui.btnFechaaltacli.clicked.connect(events.openCalendar)
+        globals.ui.btnFechaaltacli.clicked.connect(Events.openCalendar)
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = Main()

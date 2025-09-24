@@ -1,4 +1,6 @@
 import sys
+import time
+
 from PyQt6 import QtWidgets, QtCore, QtGui
 import globals
 
@@ -21,11 +23,19 @@ class Events:
         except Exception as e:
             print("error salida", e)
 
-""" 
-    @staticmethod
     def openCalendar(self):
         try:
-            # venCalendar.show()
+            globals.vencal.show()
         except Exception as e:
-            print("error en calendario", e) 
-"""
+            print("error en claendario", e)
+
+    def loadData(qDate):
+        try:
+            data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
+            if globals.ui.panMain.currentIndex() == 0:
+                globals.ui.txtAltacli.setText(data)
+            time.sleep(0.1)
+            globals.vencal.hide()
+
+        except Exception as e:
+            print("error en cargar Data", e)

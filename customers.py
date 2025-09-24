@@ -6,6 +6,7 @@ class Customers:
         try:
             dni = globals.ui.txtDnicli.text()
             dni = str(dni).upper()
+            globals.ui.txtDnicli.setText(dni)
             tabla = "TRWAGMYFPDXBNJZSQVHLCKE"
             dig_ext = "XYZ"
             reemp_dig_ext = {'X': '0', 'Y': '1', 'Z': '2'}

@@ -2,6 +2,8 @@ import os
 
 from PyQt6 import QtSql, QtWidgets
 
+from globals import mboxStyleSheet
+
 
 class Conexion:
 
@@ -24,8 +26,13 @@ class Conexion:
                                                QtWidgets.QMessageBox.StandardButton.Cancel)
                 return False
             else:
-                QtWidgets.QMessageBox.information(None, 'Aviso', 'Conexión Base de Datos realizada',
-                                                  QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox = QtWidgets.QMessageBox()
+                mbox.setWindowTitle("Information")
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setText('Conexión Base de Datos realizada')
+                mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+                mbox.setStyleSheet(mboxStyleSheet)
+                mbox.exec()
                 return True
         else:
             QtWidgets.QMessageBox.critical(None, 'Error', 'No se pudo abrir la base de datos.',
@@ -81,6 +88,16 @@ class Conexion:
                 while query.next():
                     for i in range(query.record().count()):
                         list.append(query.value(i))
+            if len(list) == 0:
+                query = QtSql.QSqlQuery()
+                query.prepare("select * from customers where dni_nie = :dato")
+                query.bindValue(":dato", dato)
+                if query.exec():
+                    while query.next():
+                        for i in range(query.record().count()):
+                            list.append(query.value(i))
+
+
             return list
         except Exception as e:
             print("error en dataOneCustomer", e)
@@ -125,3 +142,29 @@ class Conexion:
                 return False
         except Exception as error:
             print("error addCli", error)
+
+    @staticmethod
+    def modifCli(dni, modifCli):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("update customers set adddata = :adddata, surname = :surname, name = :name, mail = :mail, "
+                          "mobile = :mobile, address = :address, province = :province, city = :city, invoicetype = :invoicetype, historical = :historical "
+                          "where dni_nie = :dni")
+            query.bindValue(":dni", dni)
+            query.bindValue(":adddata", str(modifCli[0]))
+            query.bindValue(":surname", str(modifCli[1]))
+            query.bindValue(":name", str(modifCli[2]))
+            query.bindValue(":mail", str(modifCli[3]))
+            query.bindValue(":mobile", str(modifCli[4]))
+            query.bindValue(":address", str(modifCli[5]))
+            query.bindValue(":province", str(modifCli[6]))
+            query.bindValue(":city", str(modifCli[7]))
+            query.bindValue(":invoicetype", str(modifCli[9]))
+            query.bindValue(":historical", str(modifCli[8]))
+            if query.exec():
+                return True
+            else:
+                return False
+
+        except Exception as e:
+            print("error modifyCli", e)

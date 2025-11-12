@@ -1,5 +1,6 @@
 import events
 import globals
+import styles
 from dlgCalendar import *
 from dlgAbout import *
 from datetime import datetime
@@ -22,4 +23,9 @@ class About(QtWidgets.QDialog):
         globals.venAbout = Ui_dlgAbout()
         globals.venAbout.setupUi(self)
         globals.venAbout.btnCloseAbout.clicked.connect(self.close)
+        self.setStyleSheet(styles.load_stylesheet())
         #  globals.venAbaout.btnCloseAbout.clicked.connect(events.Events.closeAbout)
+
+class FileDialogOpen(QtWidgets.QFileDialog):
+    def __init__(self):
+        super(FileDialogOpen, self).__init__()

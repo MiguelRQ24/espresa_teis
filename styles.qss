@@ -40,6 +40,27 @@ QTabBar::tab:selected {
     background: #e6ecf3;
     border-radius: 2px;
 }
+/*Toolbar*/
+
+QToolBar {
+    background-color: #e6ecf3; /* mismo tono que la barra de menú */
+    border: none;
+    padding: 4px;
+    spacing: 6px;
+}
+
+/* Botones dentro del toolbar */
+QToolButton {
+    background-color: #e6ecf3;
+    color: #2b2f40;
+    border: none;
+    border-radius: 2px;
+    margin: 2px;
+}
+
+QToolButton:hover {
+    background-color: #f4f7fa;
+}
 
 /* Cambio de la caja del botonn */
     QPushButton{
@@ -199,3 +220,29 @@ QPushButton#btnCleancli:hover{
         color: #2b2f40;
         font-size: 16px;
     }
+
+
+/* STATUS BAR */
+QStatusBar {
+    background-color: #b5c6db; /* mismo color que la barra de menús */
+    color: #2b2f40;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* QLabel dentro de la statusbar */
+QStatusBar QLabel {
+    color: #2b2f40;
+    background-color: transparent;
+    padding: 4px 10px;
+}
+
+/* Separación visual entre los labels*/
+QStatusBar::item {
+    border: none;
+    margin: 0px 8px;
+}
+QStatusBar QLabel#labelversion {
+    color: #4d5780;
+    font-style: italic;
+}

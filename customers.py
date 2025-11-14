@@ -15,7 +15,6 @@ class Customers:
 
     @staticmethod
     def checkDni():
-        print("checkDni")
         try:
             globals.ui.txtDnicli.editingFinished.disconnect(Customers.checkDni)
             dni = globals.ui.txtDnicli.text()
@@ -208,7 +207,6 @@ class Customers:
                     factura = "electronic"
                 newCli.append(factura)
                 if Conexion.addCli(newCli) and len(newCli) > 0:
-                    print("entra aqui1")
                     mbox = QtWidgets.QMessageBox()
                     mbox.setWindowTitle("Information")
                     mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
@@ -217,7 +215,6 @@ class Customers:
                     mbox.setStyleSheet(globals.mboxStyleSheet)
                     mbox.exec()
                 else:
-                    print("entra aqui 2")
                     mbox = QtWidgets.QMessageBox()
                     mbox.setWindowTitle("Warning")
                     mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
@@ -225,7 +222,6 @@ class Customers:
                     mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Yes)
                     mbox.setStyleSheet(globals.mboxStyleSheet)
                     mbox.exec()
-                print("llega aqui")
                 Customers.loadTablecli(True)
         except Exception as e:
             print("error en saveCli ", e)
@@ -252,7 +248,6 @@ class Customers:
 
     def modifCli(self):
         try:
-            print(globals.estado)
             if globals.estado == str(False):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setWindowTitle("Information")

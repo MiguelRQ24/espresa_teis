@@ -7,7 +7,6 @@ from reportlab.lib.utils import ImageReader
 
 from conexion import *
 
-# Image.open("rutaimagen")
 from reportlab.pdfgen import canvas
 class Reports:
     rootPath = ".\\reports"
@@ -17,12 +16,35 @@ class Reports:
     c = canvas.Canvas(pdf_path)
 
     @classmethod
-    def cabezera(cls):
-        logo = Image.open("img/logo.png")
-        logo = logo.resize((80, 80))
-        logoReader = ImageReader(logo)
-        cls.c.drawImage(logoReader, 485, 745)
+    def topreport(cls):
+        try:
+            path_logo = os.path.join(os.path.dirname(__file__), "img", "logo.png")
+            logo = Image.open(path_logo)
+            if isinstance(logo, Image.Image):
+                cls.c.setFont("Helvetica-Bold", 10)
+                cls.c.drawString(55, 785, "EMPRESA TEIS")
+                cls.c.drawCentredString(300, 675, "Report Customers")
+                cls.c.line(35, 665, 550, 665)
 
+                # dibuja el logo
+                cls.c.drawImage(path_logo, 480, 745, width=40, height=40)
+
+                # datos de la empresa
+                cls.c.setFont("Helvetica", 9)
+                cls.c.drawString(55, 755, "CIF: A55641214B")
+                cls.c.drawString(55, 745, "28080 Vigo")
+                cls.c.drawString(55, 735, "C/ A Picota, 12423")
+                cls.c.drawString(55, 725, "Tel: 912345678")
+                cls.c.drawString(55, 715, "Email: info@empresateis.com")
+
+                # dibujar cuadrado en los datos de la empresa
+                cls.c.line(50, 705, 50, 800)
+                cls.c.line(50, 705, 180, 705)
+                cls.c.line(180, 705, 180, 800)
+                cls.c.line(180, 800, 50, 800)
+
+        except Exception as e:
+            print("Error en topreport", e)
     
     @classmethod
     def footer(cls):
@@ -41,7 +63,7 @@ class Reports:
             
             records = Conexion.listCustomers(False)
             itmes = ["DNI_NIE", "SURNAME", "NAME", "MOBILE", "CITY", "INVOICE TYPE", "STATE" ]
-            cls.cabezera()
+            cls.topreport()
             cls.c.setFont("Helvetica-Bold", 10)
             cls.c.drawString(55, 650, itmes[0])
             cls.c.drawString(120, 650, itmes[1])
@@ -50,12 +72,13 @@ class Reports:
             cls.c.drawString(320, 650, itmes[4])
             cls.c.drawString(400, 650, itmes[5])
             cls.c.drawString(480, 650, itmes[6])
-            cls.c.line(50, 645, 525, 645)
+            cls.c.line(50, 695, 525, 695)
             cls.footer()
             x = 55
             y = 630
             for record in records:
                 if y <= 90:
+                    cls.topreport()
                     cls.c.setFont("Helvetica-Oblique", 8)
                     cls.c.drawString(450, 75, "Next page...")
                     cls.c.showPage() # Crea nueva pagina
@@ -67,7 +90,7 @@ class Reports:
                     cls.c.drawString(320, 650, itmes[4])
                     cls.c.drawString(400, 650, itmes[5])
                     cls.c.drawString(480, 650, itmes[6])
-                    cls.c.line(50, 645, 525, 645)
+                    cls.c.line(50, 695, 525, 695)
                     cls.footer()
                     x = 55
                     y = 630
@@ -91,3 +114,6 @@ class Reports:
                     os.startfile(cls.pdf_path)
         except Exception as e:
             print("Error en reportCustomers", e)
+            
+            
+    
